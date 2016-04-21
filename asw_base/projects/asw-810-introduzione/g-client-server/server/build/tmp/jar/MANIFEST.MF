@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: asw.intro.server.Server
+Class-Path: asw-util.jar service.jar
+
