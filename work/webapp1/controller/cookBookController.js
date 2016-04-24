@@ -46,7 +46,22 @@ router.delete("/:id", function (req, res){
 
 });
 
-router.post("/:id/link", function (req, res){
+router.get("/:id/recipe", function (req, res){
+
+});
+
+/**
+ * Inserimento dentro il ricettario di una ricetta
+ */
+router.post("/:id/recipe", function (req, res){
+    var recipeID = req.body.recipeID;
+    var id = req.params.id;
+});
+
+/**
+ * Rimozione di una ricetta dal ricettario
+ */
+router.delete("/:id/recipe", function (req, res){
     var recipeID = req.body.recipeID;
     var id = req.params.id;
 });
