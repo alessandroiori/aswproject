@@ -1,7 +1,9 @@
 var router = require("express").Router();
 
 router.get("/", function (req, res){
-    
+    res.json({
+        status: true
+    })
 });
 
 router.post("/", function (req, res){

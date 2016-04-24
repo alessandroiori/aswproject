@@ -2,12 +2,16 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var recipeController = require("./controller/recipeController");
-var cookBookController = require("./controller/cookBookController");
+//var cookBookController = require("./controller/cookBookController");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(function (req, res, next){
+    console.log("["+req.ip+"] " + req.method + " " + req.path);
+    next();
+});
 
-app.use("/cookbook", cookBookController);
+//app.use("/cookbook", cookBookController);
 app.use("/recipe", recipeController);
 
 app.use(express.static(__dirname + '/public'));
