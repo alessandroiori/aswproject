@@ -1,5 +1,5 @@
 var router = require("express").Router();
-var cookBook = require("../model/cookBook");
+var cookBook = require("../model/cookBook"); //coockBook.js?
 
 router.get("/", function (req, res){
     cookBook.getCookBooks(function (err, cookBooks){

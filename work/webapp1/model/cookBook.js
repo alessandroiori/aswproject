@@ -1,4 +1,4 @@
-var CookBook = require("./model").CookBook;
+var CookBook = require("./model").CookBook; //model.js?
 
 module.exports = {
     getCookBookById: function (id, cb){

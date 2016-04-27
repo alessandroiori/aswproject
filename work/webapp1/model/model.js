@@ -11,7 +11,13 @@ var recipeSchema = new mongoose.Schema({
     }],
     ingredients: [{
         name: String,
-        quantity: String
+        quantity: String,
+        /*
+        quantity: [{
+            value: Number,
+            unit_of_value: String,
+        }],
+        */
     }],
     steps: [{
         type: String
@@ -20,7 +26,7 @@ var recipeSchema = new mongoose.Schema({
     cost: Number,
     timeOfSteps: Number,
     numberOfPeople: Number,
-    dataCretation: {
+    dataCreation: {
         type: Date,
         default: Date.now
     },
@@ -38,7 +44,7 @@ var cookBookSchema = new mongoose.Schema({
         ref: "User"
     },
     recipes:[{
-        type: mongo.Schema.Types.ObjectId,
+        type: mongo.Schema.Types.ObjectId, //mongoose?
         ref: "Recipe"
     }],
 });
@@ -46,5 +52,5 @@ var cookBookSchema = new mongoose.Schema({
 module.exports = {
     User: mongoose.model("User", userSchema),
     Recipe: mongoose.model("Recipe", recipeSchema),
-    CookBook: mongoose.model("CookUser", cookBookSchema),
+    CookBook: mongoose.model("CookUser", cookBookSchema), //CookBook?
 }
