@@ -15,7 +15,10 @@ sudo apt-get update
 
 sudo apt-get install -y mongodb-org
 
-export LC_ALL=en_US.UTF-8
+#export LC_ALL=en_US.UTF-8
+#sudo locale-gen UTF-8
+
+sudo mkdir -p /data/db
 
 mongod --bind_ip 10.11.1.101
 
