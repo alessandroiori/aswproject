@@ -39,15 +39,26 @@ router.get("/:id", function (req, res){
 });
 
 router.put("/:id", function (req, res){
-
+    cookBook.updateCoookBook(req.params.id, function (err){
+        res.json({
+            status: err == null
+        })
+    })
 });
 
 router.delete("/:id", function (req, res){
-
+    cookBook.deleteCookBook(req.params.id, function (err){
+        res.json({
+            status: err == null
+        })
+    })
 });
 
 router.get("/:id/recipe", function (req, res){
-
+    cookBook.getRecipeForCookibook(req.params.id, function (err, recipes){
+        if (err) res.json({status:false});
+        else res.json({status:true, recipes:recipes})
+    });
 });
 
 /**
@@ -56,6 +67,12 @@ router.get("/:id/recipe", function (req, res){
 router.post("/:id/recipe", function (req, res){
     var recipeID = req.body.recipeID;
     var id = req.params.id;
+
+    cookBook.linkRecipeForCookbook(id, recipeID, function (err){
+        res.json({
+            status: err == null
+        })
+    })
 });
 
 /**
@@ -64,6 +81,12 @@ router.post("/:id/recipe", function (req, res){
 router.delete("/:id/recipe", function (req, res){
     var recipeID = req.body.recipeID;
     var id = req.params.id;
+
+    cookBook.unlickRecipeForCookbook(id, recipeID, function (err){
+        res.json({
+            status: err == null
+        })
+    })
 });
 
 
