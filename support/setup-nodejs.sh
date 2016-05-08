@@ -59,13 +59,13 @@ function setupEnvVars {
 	echo export PATH=\${PATH}:\${NODE_HOME}/bin >> /etc/profile.d/nodejs.sh
 }
 
-#function InstallExpress {
-#	# deve essere presente il file package.jason configurato
-#	echo "=================="
-#	echo "installing express"
-#	echo "=================="
-#	npm install express --save
-#}
+function InstallFromJson {
+	# deve essere presente il file package.jason configurato
+	echo "===================="
+	echo "installing from JSON"
+	echo "===================="
+	npm install
+}
 
 function installNode {
 	if resourceExists $NODE_ARCHIVE; then
@@ -79,4 +79,4 @@ echo "setup node js"
 installNode
 setupNode
 setupEnvVars
-#InstallExpress
+#InstallFromJson
