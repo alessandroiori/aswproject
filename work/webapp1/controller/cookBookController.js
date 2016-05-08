@@ -18,7 +18,10 @@ router.get("/", function (req, res){
 });
 
 router.post("/", function (req, res){
-
+    cookBook.createCookBook(req.body, function (err, cb){
+        if (err) res.json({status: false});
+        else res.json({status: true, cookbook: cb})
+    })
 });
 
 router.get("/:id", function (req, res){
