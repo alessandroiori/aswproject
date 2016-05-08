@@ -6,7 +6,7 @@
 source "/home/vagrant/shared/scripts/common.sh"
 
 # set up node js constants 
-NODE_VERSION=4.4.3
+NODE_VERSION=6.1.0
 # e.g., node-v4.4.3-linux-x64
 NODE_FILE_NAME=node-v${NODE_VERSION}-linux-x64
 # e.g., node-v4.4.3-linux-x64.tar.xz
