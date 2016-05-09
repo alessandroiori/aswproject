@@ -1,7 +1,7 @@
 # 
 # Vagrantfile per i progetti client-server (per esempio, il progetto asw-830-rmi), che prevedono:
 # - un nodo server 
-# - un nodo client 
+# - un nodo db 
 # 
 
 VAGRANTFILE_API_VERSION = "2"
@@ -31,6 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             v.memory = 1024 
         end 
 
+        node.vm.network "forwarded_port", guest: 8080, host: 8080, id: 'webapp', auto_correct: true
         node.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
         node.ssh.forward_agent = true
  
@@ -56,6 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             v.memory = 1024 
         end 
 
+        node.vm.network "forwarded_port", guest: 27017, host: 27017, id: 'mongodb', auto_correct: true
         node.vm.network "forwarded_port", guest: 22, host: 2221, id: 'ssh', auto_correct: true
         node.ssh.forward_agent = true
  
