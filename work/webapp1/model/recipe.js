@@ -1,4 +1,4 @@
-var Recipe = require("./model.js").Recipe;
+var Recipe = require("./model").Recipe;
 
 module.exports = {
     getRecipeById: function (id, r) {
@@ -13,18 +13,53 @@ module.exports = {
             .find()
             .exec(rs);
     },
-    /*
-    deleteRecipeByID: function (id, r) {
-        Recipe
-            .deleteOne({
-                _id: id
+    createRecipe: function (data, r) {
+        if (typeof data.name !== "undefined" ||
+            typeof data.description !== "undefined" ||
+            typeof data.tag !== "undefined" ||
+            typeof data.ingredients !== "undefined" ||
+            typeof data.steps !== "undefined" ||
+            typeof data.difficulty !== "undefined" ||
+            typeof data.cost !== "undefined" ||
+            typeof data.timeOfSteps !== "undefined") {
+
+            var recipe = new Recipe(data)
+            recipe.save( function (err) {
+                r (err, (err)?null:recipe);
             })
-            .exec(r);
+        } else {
+            r (true, null);
+        }
     },
-    removeRecipes: function (rs) {
-        Recipe
-            .remove()
-            .exec(rs);
+    updateRecipe: function (id, data, r) {
+        /* Recipe.findOneAndUpdate*/
+
+        if (typeof data.name !== "undefined" ||
+            typeof data.description !== "undefined" ||
+            typeof data.tag !== "undefined" ||
+            typeof data.ingredients !== "undefined" ||
+            typeof data.steps !== "undefined" ||
+            typeof data.difficulty !== "undefined" ||
+            typeof data.cost !== "undefined" ||
+            typeof data.timeOfSteps !== "undefined") {
+
+            Recipe.where({
+                _id : id
+            }).findOne(function (err, recipe){
+                if (err || recipe == null) r (err, null);
+                else recipe.update(data, r);
+            })
+        } else {
+            r(true, null);
+        }
     },
-    */
+    deleteRecipe: function (id, r) {
+        // Recipe.find({ _id: id }).remove().exec();
+        Recipe.where({
+            _id: id
+        }).findOne(function (err, recipe) {
+            if (err || recipe == null) r (err, null);
+            else recipe.remove(r);
+        })
+    },
 };

@@ -1,4 +1,4 @@
-var CookBook = require("./model").CookBook; //model.js?
+var CookBook = require("./model").CookBook;
 
 module.exports  = {
     getCookBookById: function (id, cb){
@@ -49,11 +49,11 @@ module.exports  = {
             _id: id
         }).findOne(function (err, cookBook){
             if (err || cookBook == null) cb(err, null);
-            else cookBook.remove(data, cb);
+            else cookBook.remove(data, cb); // data??
         })
 
     },
-    getRecipeForCookibook: function (id, cb){
+    getRecipeForCookibook: function (id, cb){   //Cooki ??
         this.getCookBookById(id, function (err, cookBook){
             if (err) cb(err, null)
             else cb(null, cookBook.recipes);

@@ -42,7 +42,7 @@ router.get("/:id", function (req, res){
 });
 
 router.put("/:id", function (req, res){
-    cookBook.updateCoookBook(req.params.id, function (err){
+    cookBook.updateCoookBook(req.params.id, function (err){ /* manca data ???*/
         res.json({
             status: err == null
         })
