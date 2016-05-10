@@ -32,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             v.memory = 1024 
         end 
 
-        #node.vm.network "forwarded_port", guest: 8080, host: 8080, id: 'webapp', auto_correct: true
+        node.vm.network "forwarded_port", guest: 8080, host: 8080, id: 'webapp', auto_correct: true
         node.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
         node.ssh.forward_agent = true
  
@@ -42,9 +42,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         
         # provisioning con chef
         node.vm.provision :chef_solo do |chef|
-            chef.add_recipe "nodejs"
+            chef.add_recipe "nodejs"            
         end
 
+        #node.vm.provision :shell, :inline => 'npm install'
+        
         node.vm.provision :shell, 
             inline: "echo  'configurazione nodo server completata'"
 
@@ -54,25 +56,34 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Configurazione del nodo "db", che prevede: 
     # - Mongo DB
     #
-    # config.vm.define "db" do |node|
-    #     node.vm.hostname = "db"    
-    #     node.vm.network "private_network", ip: "10.11.1.201", virtualbox__intnet: true
+    config.vm.define "db" do |node|
+        node.vm.hostname = "db"    
+        node.vm.network "private_network", ip: "10.11.1.201", virtualbox__intnet: true
 
-    #     node.vm.provider "virtualbox" do |v| 
-    #         v.memory = 1024 
-    #     end 
+        node.vm.provider "virtualbox" do |v| 
+            v.memory = 1024 
+        end 
 
-    #     node.vm.network "forwarded_port", guest: 27017, host: 27017, id: 'mongodb', auto_correct: true
-    #     node.vm.network "forwarded_port", guest: 22, host: 2221, id: 'ssh', auto_correct: true
-    #     node.ssh.forward_agent = true
-    #     node.vm.provision :shell, :inline => 'mkdir -p /data/db'
-    #     # provisioning con bash 
-    #     node.vm.provision :shell, :inline => 'apt-get update'
-    #     node.vm.provision :shell, path: "../shared/scripts/setup-mongodb.sh"
-  
-    #     node.vm.provision :shell, 
-    #         inline: "echo  'configurazione nodo db completata'"
+        node.vm.network "forwarded_port", guest: 27017, host: 27017, id: 'mongodb', auto_correct: true
+        node.vm.network "forwarded_port", guest: 22, host: 2221, id: 'ssh', auto_correct: true
+        node.ssh.forward_agent = true
+        
+        # provisioning con bash 
+        node.vm.provision :shell, :inline => 'apt-get update'
+        
+        # provisioning 
+        node.vm.provision :shell, :inline => 'mkdir -p /data/db'
 
-    # end
+        # provisioning con chef
+        node.vm.provision :chef_solo do |chef|
+            chef.add_recipe "mongodb-debs"
+        end
+        
+        node.vm.provision :shell, :inline => 'mongod --bind_ip 10.11.1.201'
+        
+        node.vm.provision :shell, 
+            inline: "echo  'configurazione nodo db completata'"
+
+    end
 
 end

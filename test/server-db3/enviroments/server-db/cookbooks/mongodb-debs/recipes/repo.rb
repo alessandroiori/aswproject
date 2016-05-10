@@ -30,12 +30,12 @@ execute "install mongodb key" do
   not_if "apt-key list | grep 7F0CEB10"
 end
 
-template "/etc/apt/sources.list.d/mongodb.list" do
+template "/etc/apt/sources.list.d/mongodb-org-3.0.list" do
   mode 0644
 end
 
 execute "update apt" do
   command "apt-get update"
-  subscribes :run, resources(:template => "/etc/apt/sources.list.d/mongodb.list"), :immediately
+  subscribes :run, resources(:template => "/etc/apt/sources.list.d/mongodb-org-3.0.list"), :immediately
   action :nothing
 end

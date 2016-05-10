@@ -20,7 +20,7 @@
 
 include_recipe "mongodb-debs::repo"
 
-package "mongodb-10gen"
+package "mongodb"
 
 service "mongodb" do
   action [ :enable, :start ]
