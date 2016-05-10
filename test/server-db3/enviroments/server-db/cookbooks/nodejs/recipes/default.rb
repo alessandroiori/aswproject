@@ -24,18 +24,21 @@
 version_array = node[:nodejs][:version].split(".").map { |x| x.to_i };
 
 # get the path for the appropriate version
-path = version_array[1] > 5 ||
-       version_array[1] == 5 && version_array[2] >= 1?
-            "http://nodejs.org/dist/v#{node[:nodejs][:version]}/":
-            "http://nodejs.org/dist/"
+path = "http://nodejs.org/dist/v#{node[:nodejs][:version]}/"
+            # e.g. node-v6.1.0-linux-x64.tar.gz
+            # e.g. https://nodejs.org/dist/v6.1.0/node-v6.1.0.tar.gz
+            # old "http://nodejs.org/dist/v#{node[:nodejs][:version]}
+            
+            #"http://nodejs.org/dist/"
 
-from_source = (node[:nodejs] != nil && \
-               node[:nodejs][:from_source] != nil && \
-               node[:nodejs][:from_source]) || \
-               version_array[1] < 8 || \
-               version_array[1] == 8 && version_array[2] < 6
+from_source = true
+              # (node[:nodejs] != nil && \
+              #  node[:nodejs][:from_source] != nil && \
+              #  node[:nodejs][:from_source]) || \
+              #  version_array[1] < 8 || \
+              #  version_array[1] == 8 && version_array[2] < 6
 
-if from_source == true
+if from_source == false
   include_recipe "build-essential"
 
   case node[:platform]
@@ -50,9 +53,10 @@ if from_source == true
     cwd "/usr/local/src"
     user "root"
     code <<-EOH
-      wget #{path}node-v#{node[:nodejs][:version]}.tar.gz && \
-      tar zxf node-v#{node[:nodejs][:version]}.tar.gz && \
-      cd node-v#{node[:nodejs][:version]} && \
+    node-v#{node[:nodejs][:version]}-linux-x64.tar.gz
+      wget #{path}node-v#{node[:nodejs][:version]}-linux-x64.tar.gz && \
+      tar zxf node-v#{node[:nodejs][:version]}-linux-x64.tar.gz && \
+      cd node-v#{node[:nodejs][:version]}-linux-x64 && \
       ./configure --prefix=#{node[:nodejs][:dir]} && \
       make && \
       make install
@@ -61,7 +65,7 @@ if from_source == true
   end
 
   # install npm if the version is less than 0.6.3
-  if node[:nodejs][:version] < "0.6.3"
+  if node[:nodejs][:version] <= "6.1.0"
     package "curl"
 
     bash "install npm" do
@@ -81,13 +85,13 @@ else
     cwd "/opt"
     user "root"
     code <<-EOH
-      wget #{path}node-v#{node[:nodejs][:version]}-linux-x86.tar.gz && \
-      tar zxf node-v#{node[:nodejs][:version]}-linux-x86.tar.gz && \
-      ln -s /opt/node-v#{node[:nodejs][:version]}-linux-x86/bin/node /usr/local/bin/node && \
-      ln -s /opt/node-v#{node[:nodejs][:version]}-linux-x86/bin/node-waf /usr/local/bin/node-waf && \
-      ln -s /opt/node-v#{node[:nodejs][:version]}-linux-x86/bin/npm /usr/local/bin/npm
+      wget #{path}node-v#{node[:nodejs][:version]}-linux-x64.tar.gz && \
+      tar zxf node-v#{node[:nodejs][:version]}-linux-x64.tar.gz && \
+      ln -s /opt/node-v#{node[:nodejs][:version]}-linux-x64/bin/node /usr/local/bin/node && \
+      ln -s /opt/node-v#{node[:nodejs][:version]}-linux-x64/bin/node-waf /usr/local/bin/node-waf && \
+      ln -s /opt/node-v#{node[:nodejs][:version]}-linux-x64/bin/npm /usr/local/bin/npm
     EOH
-    not_if "/opt/node-v#{node[:nodejs][:version]}-linux-x86/bin/node -v | grep 'v#{node[:nodejs][:version]}'"
+    not_if "/opt/node-v#{node[:nodejs][:version]}-linux-x64/bin/node -v | grep 'v#{node[:nodejs][:version]}'"
   end
 
 

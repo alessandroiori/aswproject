@@ -10,14 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Configurazioni comuni.
 
     # Ubuntu trusty 64 VirtualBox.
-    #config.vm.box = "ubuntu/trusty64"
+    config.vm.box = "ubuntu/trusty64"
     #config.vm.box = "puppetlabs/ubuntu-14.04-64-puppet"
 
     # folder per i progetti Asw (/home/vagrant/projects)
-    config.vm.synced_folder "../../projects/", "/home/vagrant/projects", :mount_options => ["dmode=777", "fmode=777"]
+    #config.vm.synced_folder "../../projects/", "/home/vagrant/projects", :mount_options => ["dmode=777", "fmode=777"]
 
     # folder per le risorse condivise per gli ambienti Asw (/home/vagrant/shared/resources e /home/vagrant/shared/scripts) 
-    config.vm.synced_folder "../shared/", "/home/vagrant/shared", :mount_options => ["dmode=777", "fmode=777"]
+    #config.vm.synced_folder "../shared/", "/home/vagrant/shared", :mount_options => ["dmode=777", "fmode=777"]
 
     #
     # Configurazione del nodo "server", che prevede: 
@@ -25,8 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #
     config.vm.define "server" do |node|
         node.vm.hostname = "server"   
-        config.vm.box = "precise32"
-        config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+
         node.vm.network "private_network", ip: "10.11.1.101", virtualbox__intnet: true
 
         node.vm.provider "virtualbox" do |v| 
@@ -41,21 +40,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         node.vm.provision :shell, :inline => 'apt-get update'
         #node.vm.provision :shell, path: "../shared/scripts/setup-nodejs.sh"
         
-        node.vm.provision :shell, :inline => 'mkdir -p /data/db'
-
+        # provisioning con chef
         node.vm.provision :chef_solo do |chef|
             chef.add_recipe "nodejs"
-            chef.add_recipe "mongodb-debs"
-        
-            chef.json = {
-              "nodejs" => {
-                "version" => "0.10.29"
-                # uncomment the following line to force
-                # recent versions (> 0.8.5) to be built from
-                # the source code
-                # , "from_source" => true
-                }
-            }
         end
 
         node.vm.provision :shell, 
@@ -78,7 +65,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #     node.vm.network "forwarded_port", guest: 27017, host: 27017, id: 'mongodb', auto_correct: true
     #     node.vm.network "forwarded_port", guest: 22, host: 2221, id: 'ssh', auto_correct: true
     #     node.ssh.forward_agent = true
- 
+    #     node.vm.provision :shell, :inline => 'mkdir -p /data/db'
     #     # provisioning con bash 
     #     node.vm.provision :shell, :inline => 'apt-get update'
     #     node.vm.provision :shell, path: "../shared/scripts/setup-mongodb.sh"
