@@ -73,7 +73,7 @@ router.post("/:id/recipe/link", function (req, res){
 
     cookBook.linkRecipeForCookBook(id, recipeID, function (err){
         res.json({
-            status: err == null
+            status: !err
         })
     })
 });
@@ -85,7 +85,7 @@ router.post("/:id/recipe/unlink", function (req, res){
     var recipeID = req.body.recipeID;
     var id = req.params.id;
 
-    cookBook.unlickRecipeForCookBook(id, recipeID, function (err){
+    cookBook.unlinkRecipeForCookBook(id, recipeID, function (err){
         res.json({
             status: err == null
         })

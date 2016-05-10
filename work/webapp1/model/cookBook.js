@@ -55,20 +55,23 @@ module.exports  = {
         })
 
     },
-    getRecipeForCookBook: function (id, cb){   //Cooki ??
+    getRecipeForCookBook: function (id, cb){
         this.getCookBookById(id, function (err, cookBook){
             if (err) cb(err, null)
             else cb(null, cookBook.recipes);
         });
     },
     linkRecipeForCookBook: function (id, id_recipe, cb) {
-        CookBook.findByIdAndUpdate(id, {
-            $push:{
-                "recipes": support.toObjctedId(id_recipe)
+        CookBook.update({
+            _id: id,
+            $addToSet: {
+                recipes: support.toObjctedId(id_recipe)
             }
-        }, cb);
+        }, function (err, r){
+            cb((typeof r != "undefined" && r.nModified == 0) || err != null);
+        });
     },
-    unlickRecipeForCookBook: function (id, id_recipe, cb){
+    unlinkRecipeForCookBook: function (id, id_recipe, cb){
         CookBook.findByIdAndUpdate(id, {
             $pull:{
                 "recipes": support.toObjctedId(id_recipe)
