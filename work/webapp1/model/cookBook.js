@@ -21,7 +21,7 @@ module.exports  = {
             typeof data.description !== "undefined" ||
             typeof data.owner !== "undefined"){
 
-            var cookBook = new CookBook(data)
+            var cookBook = new CookBook(data);
             cookBook.save(function (err){
                 cb (err, (err)?null:cookBook);
             })
@@ -49,24 +49,24 @@ module.exports  = {
             _id: id
         }).findOne(function (err, cookBook){
             if (err || cookBook == null) cb(err, null);
-            else cookBook.remove(data, cb); // data??
+            else cookBook.remove(cb);
         })
 
     },
-    getRecipeForCookibook: function (id, cb){   //Cooki ??
+    getRecipeForCookBook: function (id, cb){   //Cooki ??
         this.getCookBookById(id, function (err, cookBook){
             if (err) cb(err, null)
             else cb(null, cookBook.recipes);
         });
     },
-    linkRecipeForCookbook: function (id, id_recipe, cb) {
+    linkRecipeForCookBook: function (id, id_recipe, cb) {
         CookBook.findByIdAndUpdate(id, {
             "$push":{
                 "recipes": id_recipe
             }
         }, cb);
     },
-    unlickRecipeForCookbook: function (id, id_recipe, cb){
+    unlickRecipeForCookBook: function (id, id_recipe, cb){
         ookBook.findByIdAndUpdate(id, {
             "$pull":{
                 "recipes": id_recipe

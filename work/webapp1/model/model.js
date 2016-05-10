@@ -44,7 +44,7 @@ var cookBookSchema = new mongoose.Schema({
         ref: "User"
     },
     recipes:[{
-        type: mongo.Schema.Types.ObjectId, //mongoose?
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Recipe"
     }],
 });
@@ -52,5 +52,5 @@ var cookBookSchema = new mongoose.Schema({
 module.exports = {
     User: mongoose.model("User", userSchema),
     Recipe: mongoose.model("Recipe", recipeSchema),
-    CookBook: mongoose.model("CookUser", cookBookSchema), //CookBook?
+    CookBook: mongoose.model("CookBook", cookBookSchema), //CookBook?
 }

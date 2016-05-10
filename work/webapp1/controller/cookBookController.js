@@ -42,7 +42,7 @@ router.get("/:id", function (req, res){
 });
 
 router.put("/:id", function (req, res){
-    cookBook.updateCoookBook(req.params.id, function (err){ /* manca data ???*/
+    cookBook.updateCoookBook(req.params.id, req.body,function (err){ /* manca data ???*/
         res.json({
             status: err == null
         })
@@ -58,7 +58,7 @@ router.delete("/:id", function (req, res){
 });
 
 router.get("/:id/recipe", function (req, res){
-    cookBook.getRecipeForCookibook(req.params.id, function (err, recipes){
+    cookBook.getRecipeForCookBook(req.params.id, function (err, recipes){
         if (err) res.json({status:false});
         else res.json({status:true, recipes:recipes})
     });
@@ -71,7 +71,7 @@ router.post("/:id/recipe/link", function (req, res){
     var recipeID = req.body.recipeID;
     var id = req.params.id;
 
-    cookBook.linkRecipeForCookbook(id, recipeID, function (err){
+    cookBook.linkRecipeForCookBook(id, recipeID, function (err){
         res.json({
             status: err == null
         })
@@ -85,7 +85,7 @@ router.post("/:id/recipe/unlink", function (req, res){
     var recipeID = req.body.recipeID;
     var id = req.params.id;
 
-    cookBook.unlickRecipeForCookbook(id, recipeID, function (err){
+    cookBook.unlickRecipeForCookBook(id, recipeID, function (err){
         res.json({
             status: err == null
         })

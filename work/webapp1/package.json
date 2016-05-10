@@ -14,7 +14,10 @@
     "mongoose": "^4.4.13"
   },
   "config": {
-    "mongoose": "mongodb://localhost/test"
+    "mongoose": "mongodb://10.211.55.10:27017/snapcook",
+    "express": {
+      "port": 3000
+    }
   },
   "description": ""
 }
