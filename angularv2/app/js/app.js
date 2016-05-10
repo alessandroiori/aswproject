@@ -10,23 +10,23 @@ var cookbookApp = angular.module('cookbookApp', [
 cookbookApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-     when('/recipes', {
+     when('/recipe', {
         templateUrl: 'partials/recipe-list.html',
         controller: 'RecipeListCtrl'
       }).
-    when('/recipes/add', {
+    when('/recipe/add', {
         templateUrl: 'partials/add-recipe.html',
         controller: 'RecipeAddCtrl'
     }).
-    when('/recipes/:recipeId', {
+    when('/recipe/:recipeId', {
             templateUrl: 'partials/recipe-detail.html',
             controller: 'RecipeDetailCtrl'
         }).
-    when('/recipes/cookbook/:cookBookId', {
+    when('/recipe/cookbook/:cookBookId', {
         templateUrl: 'partials/recipe-list.html',
         controller: 'RecipeCookBookCtrl'
       }).
     otherwise({
-        redirectTo: '/recipes'
+        redirectTo: '/recipe'
       });
   }]);

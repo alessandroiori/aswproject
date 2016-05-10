@@ -977,3 +977,7 @@ textarea.form-control {	height:135px; }
 	.gallery_title h3 { font-size: 40px; }
 	.gallery_title h4 { font-size: 18px; }
 }
+
+.displayInline{
+	display: flex;
+}
