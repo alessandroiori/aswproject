@@ -53,4 +53,9 @@ module.exports = {
     User: mongoose.model("User", userSchema),
     Recipe: mongoose.model("Recipe", recipeSchema),
     CookBook: mongoose.model("CookBook", cookBookSchema), //CookBook?
+    support: {
+        toObjctedId: function (id){
+            return mongoose.Types.ObjectId(id);
+        }
+    }
 }

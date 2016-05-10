@@ -1,4 +1,5 @@
 var CookBook = require("./model").CookBook;
+var support = require("./model").support;
 
 module.exports  = {
     getCookBookById: function (id, cb){
@@ -37,7 +38,8 @@ module.exports  = {
             CookBook.where({
                 _id: id
             }).findOne(function (err, cookBook){
-                if (err || cookBook == null) cb(err, null);
+                if (err) cb(err, null);
+                else if (cookBook == null) cb(true, null);
                 else cookBook.update(data, cb);
             })
 
@@ -61,15 +63,15 @@ module.exports  = {
     },
     linkRecipeForCookBook: function (id, id_recipe, cb) {
         CookBook.findByIdAndUpdate(id, {
-            "$push":{
-                "recipes": id_recipe
+            $push:{
+                "recipes": support.toObjctedId(id_recipe)
             }
         }, cb);
     },
     unlickRecipeForCookBook: function (id, id_recipe, cb){
-        ookBook.findByIdAndUpdate(id, {
-            "$pull":{
-                "recipes": id_recipe
+        CookBook.findByIdAndUpdate(id, {
+            $pull:{
+                "recipes": support.toObjctedId(id_recipe)
             }
         }, cb);
     }
