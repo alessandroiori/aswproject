@@ -8,13 +8,15 @@
             <div class="box bottom-main info-description-container">
                     <div class="info">
                         <div class="proin-title">
-
-
                             <h3><a href="#/recipes/{{recipe._id}}">{{recipe.name}}</a></h3>
-                            <h4 class="text-uppercase"> <div class="col-sm-5" ng-repeat="tag in recipe.tag">{{tag}}</div></h4>
-                            <div class="col-sm-5" ><h6 class="text-uppercase">{{recipe.timeOfSteps}} min</h6></div>            
+                            <h4 class="row text-uppercase">
+                                <span ng-repeat="tag in recipe.tag">{{tag}}{{!$last ? ", " : ""}}</span>
+                            </h4>
+                            <h4 class="text-uppercase">{{recipe.timeOfSteps}} min</h4>
                         </div>                                       
-                        <a href="#/recipes/{{recipe._id}}"><img ng-src="images/cook1.jpg" alt="{{recipe.name}}" class="img-responsive"></a>
+                        <a href="#/recipes/{{recipe._id}}">
+                            <img ng-src="images/cook1.jpg" alt="{{recipe.name}}" class="img-responsive">
+                        </a>
                         <p class="proin-right-text">{{recipe.description}}</p>
 
 
