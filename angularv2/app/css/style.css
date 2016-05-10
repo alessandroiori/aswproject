@@ -690,8 +690,20 @@ body {
 .form-control {
 	border-radius: 0;
 	height:43px;
+	width:100%;
 }
+.form-control2 {
+	border-radius: 0;
+	height:43px;
+}
+
 .form-control:focus {
+    border-color: rgb(25, 192, 200);
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(25,192,200,.6);
+}
+
+.form-control2:focus {
     border-color: rgb(25, 192, 200);
     outline: 0;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(25,192,200,.6);

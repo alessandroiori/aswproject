@@ -54,3 +54,31 @@ appControllers.controller('RecipeDetailCtrl', ['$scope', '$http', '$routeParams'
           ,function error (response){});
 }]);
 
+appControllers.controller('RecipeAddCtrl', ['$scope','$http',
+    function($scope,$http) {
+
+      $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
+
+      $scope.addNewChoice = function() {
+        var newItemNo = $scope.choices.length+1;
+        $scope.choices.push({'id':'choice'+newItemNo});
+      };
+
+      $scope.removeChoice = function() {
+        var lastItem = $scope.choices.length-1;
+        $scope.choices.splice(lastItem);
+      };
+
+      $scope.steps = [{id: 'steps1'}, {id: 'steps2'}];
+
+      $scope.addNewStep = function() {
+        var newItemNo = $scope.steps.length+1;
+        $scope.steps.push({'id':'steps'+newItemNo});
+      };
+
+      $scope.removeStep = function() {
+        var lastItem = $scope.steps.length-1;
+        $scope.steps.splice(lastItem);
+      };
+
+}]);

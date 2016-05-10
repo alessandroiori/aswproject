@@ -14,19 +14,19 @@ cookbookApp.config(['$routeProvider',
         templateUrl: 'partials/recipe-list.html',
         controller: 'RecipeListCtrl'
       }).
-      when('/recipes/cookbook/:cookBookId', {
+    when('/recipes/add', {
+        templateUrl: 'partials/add-recipe.html',
+        controller: 'RecipeAddCtrl'
+    }).
+    when('/recipes/:recipeId', {
+            templateUrl: 'partials/recipe-detail.html',
+            controller: 'RecipeDetailCtrl'
+        }).
+    when('/recipes/cookbook/:cookBookId', {
         templateUrl: 'partials/recipe-list.html',
         controller: 'RecipeCookBookCtrl'
       }).
-      when('/recipes/add', {
-        templateUrl: 'partials/add-recipe.html',
-        controller: ''
-      }).
-      when('/recipes/:recipeId', {
-        templateUrl: 'partials/recipe-detail.html',
-        controller: 'RecipeDetailCtrl'
-      }).
-      otherwise({
+    otherwise({
         redirectTo: '/recipes'
       });
   }]);
