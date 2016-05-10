@@ -1,7 +1,28 @@
 var mongoose = require('mongoose');
 var config = require("../package.json").config;
 
-mongoose.connect(config.mongoose);
+// var con = true;
+
+// while(con){
+//     try{
+//         mongoose.connect(config.mongoose);    
+//         con = false;
+//     }catch(e){
+//         con = true;
+//         console.err("ERROR: connessione db");
+//     }
+// }
+
+
+
+var MongoDB = mongoose.connect(config.mongoose).connection; 
+MongoDB.on('error', function(err) { console.log(err.message); });
+MongoDB.once('open', function() {
+  console.log("mongodb connection open");
+});
+
+
+
 
 var recipeSchema = new mongoose.Schema({
     name: String,

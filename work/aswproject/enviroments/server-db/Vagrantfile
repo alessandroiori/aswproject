@@ -19,40 +19,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.synced_folder "../shared/", "/home/vagrant/shared", :mount_options => ["dmode=777", "fmode=777"]
 
     #
-    # Configurazione del nodo "server", che prevede: 
-    # - Node JS
-    #
-    config.vm.define "server" do |node|
-        node.vm.hostname = "server"   
-
-        #node.vm.network "public_network", ip: "10.11.1.301"
-        node.vm.network "private_network", ip: "10.11.1.101", virtualbox__intnet: true
-
-        node.vm.provider "virtualbox" do |v| 
-            v.memory = 1024 
-        end 
-
-        node.vm.network "forwarded_port", guest: 3000, host: 8080, id: 'webapp', auto_correct: true
-        node.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
-        node.ssh.forward_agent = true
- 
-        # provisioning con bash 
-        node.vm.provision :shell, :inline => 'apt-get update'
-        
-        # provisioning con chef
-        node.vm.provision :chef_solo do |chef|
-            chef.cookbooks_path = "../shared/cookbooks"
-            chef.add_recipe "nodejs"            
-        end
-
-        node.vm.provision :shell, :inline => 'cd /home/vagrant/projects/snapcook; npm install; npm start'
-        
-        node.vm.provision :shell, 
-            inline: "echo  'configurazione nodo server completata'"
-
-    end
-
-    #
     # Configurazione del nodo "db", che prevede: 
     # - Mongo DB
     #
@@ -80,10 +46,44 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             chef.add_recipe "mongodb-debs"
         end
         
-        node.vm.provision :shell, :inline => 'mongod --bind_ip 10.11.1.201'
+        node.vm.provision :shell, :inline => 'nohup mongod --bind_ip 10.11.1.201 &'
         
         node.vm.provision :shell, 
             inline: "echo  'configurazione nodo db completata'"
+
+    end
+
+    #
+    # Configurazione del nodo "server", che prevede: 
+    # - Node JS
+    #
+    config.vm.define "server" do |node|
+        node.vm.hostname = "server"   
+
+        #node.vm.network "public_network", ip: "10.11.1.301"
+        node.vm.network "private_network", ip: "10.11.1.101", virtualbox__intnet: true
+
+        node.vm.provider "virtualbox" do |v| 
+            v.memory = 1024 
+        end 
+
+        node.vm.network "forwarded_port", guest: 3000, host: 8080, id: 'webapp', auto_correct: true
+        node.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
+        node.ssh.forward_agent = true
+ 
+        # provisioning con bash 
+        node.vm.provision :shell, :inline => 'apt-get update'
+        
+        # provisioning con chef
+        node.vm.provision :chef_solo do |chef|
+            chef.cookbooks_path = "../shared/cookbooks"
+            chef.add_recipe "nodejs"            
+        end
+
+        node.vm.provision :shell, :inline => 'nohup cd /home/vagrant/projects/snapcook &; nohup npm install &; nohup npm start &'
+        
+        node.vm.provision :shell, 
+            inline: "echo  'configurazione nodo server completata'"
 
     end
 
