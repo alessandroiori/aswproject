@@ -25,14 +25,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define "server" do |node|
         node.vm.hostname = "server"   
 
-        node.vm.network "public_network", ip: "10.11.1.301"
+        #node.vm.network "public_network", ip: "10.11.1.301"
         node.vm.network "private_network", ip: "10.11.1.101", virtualbox__intnet: true
 
         node.vm.provider "virtualbox" do |v| 
             v.memory = 1024 
         end 
 
-        node.vm.network "forwarded_port", guest: 8080, host: 8080, id: 'webapp', auto_correct: true
+        node.vm.network "forwarded_port", guest: 3000, host: 8080, id: 'webapp', auto_correct: true
         node.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
         node.ssh.forward_agent = true
  
@@ -45,8 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             chef.add_recipe "nodejs"            
         end
 
-        #node.vm.provision :shell, :inline => 'cd /home/vagrant/projects/snapcook'
-        #node.vm.provision :shell, :inline => 'npm install'
+        node.vm.provision :shell, :inline => 'cd /home/vagrant/projects/snapcook; npm install; npm start'
         
         node.vm.provision :shell, 
             inline: "echo  'configurazione nodo server completata'"

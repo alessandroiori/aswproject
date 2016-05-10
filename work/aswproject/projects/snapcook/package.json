@@ -16,7 +16,7 @@
   "config": {
     "mongoose": "mongodb://10.11.1.201:27017/snapcook",
     "express": {
-      "port": 8080
+      "port": 3000
     }
   },
   "description": ""
