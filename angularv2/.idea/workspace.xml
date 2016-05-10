@@ -75,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/app/partials/add-recipe.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+              <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="82" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -321,12 +321,12 @@
       <option name="presentableId" value="Default" />
       <updated>1462883311007</updated>
       <workItem from="1462883313494" duration="11960000" />
-      <workItem from="1462913639783" duration="3617000" />
+      <workItem from="1462913639783" duration="3698000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15577000" />
+    <option name="totallyTimeSpent" value="15658000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -539,7 +539,7 @@
     <entry file="file://$PROJECT_DIR$/app/partials/add-recipe.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+          <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="82" selection-end-column="26" />
           <folding />
         </state>
       </provider>
