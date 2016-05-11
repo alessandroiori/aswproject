@@ -13,49 +13,52 @@
 
             <div class="col-sm-12 col-md-12 contact_left">
                 <form class="form-horizontal" ng-submit="" >
-
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Title..." value="">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Title..." ng-model="newRecipe.name" >
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="description" name="email" placeholder="Short description..." value="">
+                        <input type="text" class="form-control" id="tags" name="email" placeholder="tags... (e.g. Antipasto, Secondo)" ng-model="newRecipe.tag">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="description" name="email" placeholder="Short description..." ng-model="newRecipe.description">
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-3 col-md-3 contact_right">
-                            <h5>Difficult</h5>
+                            <h5>Difficulty</h5>
                             <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" ng-model="newRecipe.difficulty"> 1
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" ng-model="newRecipe.difficulty"> 2
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" ng-model="newRecipe.difficulty"> 3
                             </label>
                         </div>
 
                         <div class="col-sm-3 contact_right" >
                             <h5>Servings</h5>
-                            <input type="text" class="form-control" placeholder="number..">
+                            <input type="text" class="form-control" placeholder="number.." ng-model="newRecipe.numberOfPeople">
                         </div>
 
                         <div class="col-sm-3 col-md-3 contact_right">
                             <h5>Cost</h5>
                             <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions2" id="inlineRadio11" value="option1"> 1
+                                <input type="radio" name="inlineRadioOptions2" id="inlineRadio11" value="1" ng-model="newRecipe.cost"> 1
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions2" id="inlineRadio22" value="option2"> 2
+                                <input type="radio" name="inlineRadioOptions2" id="inlineRadio22" value="2" ng-model="newRecipe.cost"> 2
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions2" id="inlineRadio33" value="option3"> 3
+                                <input type="radio" name="inlineRadioOptions2" id="inlineRadio33" value="3" ng-model="newRecipe.cost"> 3
                             </label>
                         </div>
                         <div class="col-sm-3 contact_right" >
                             <h5>Ready In</h5>
-                            <input type="text" class="form-control" placeholder="number..">
+                            <input type="text" class="form-control" placeholder="number.." ng-model="newRecipe.timeOfSteps">
                         </div>
 
                     </div>
@@ -84,16 +87,19 @@
 
 
                     <div class="col-sm-12">
-                        <select class="c-select form-group">
+                        <select class="c-select form-group" ng-controller="CookBookCtrl">
                             <option selected>select CookBook</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option ng-repeat="cookbook in cookbooks" value="{{cookbook.name}}" ng-model="newRecipe.cookbook">{{cookbook.name}}</option>
                         </select>
 
+
                         <div class="form-group">
-                            <input class="btn view_more" name="submit" type="submit" value="Aggiungi" id="submit"  >
+                            <input class="btn view_more" name="submit" type="submit" ng-click="printValue()" value="Aggiungi" id="submit"  >
+                            {{addRecipe}}
+                            {{inCookbook}}
                         </div>
+
+
                     </div>
                 </form>
 

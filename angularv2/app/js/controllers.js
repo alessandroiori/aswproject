@@ -57,11 +57,11 @@ appControllers.controller('RecipeDetailCtrl', ['$scope', '$http', '$routeParams'
 appControllers.controller('RecipeAddCtrl', ['$scope','$http',
     function($scope,$http) {
 
-      $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
+      $scope.choices = [{}, {}];
 
       $scope.addNewChoice = function() {
         var newItemNo = $scope.choices.length+1;
-        $scope.choices.push({'id':'choice'+newItemNo});
+        $scope.choices.push({});
       };
 
       $scope.removeChoice = function() {
@@ -69,16 +69,21 @@ appControllers.controller('RecipeAddCtrl', ['$scope','$http',
         $scope.choices.splice(lastItem);
       };
 
-      $scope.steps = [{id: 'steps1'}, {id: 'steps2'}];
+      $scope.steps = [{}, {}];
 
       $scope.addNewStep = function() {
         var newItemNo = $scope.steps.length+1;
-        $scope.steps.push({'id':'steps'+newItemNo});
+        $scope.steps.push({});
       };
 
       $scope.removeStep = function() {
         var lastItem = $scope.steps.length-1;
         $scope.steps.splice(lastItem);
       };
+
+      $scope.printValue = function() {
+        $scope.addRecipe = {"name": $scope.newRecipe.name, "description": $scope.newRecipe.description, "tag": $scope.newRecipe.tag, "ingredients": $scope.choices, "steps": $scope.steps, "difficulty": $scope.newRecipe.difficulty, "cost": $scope.newRecipe.cost, "timeOfSteps": $scope.newRecipe.timeOfSteps, "numberOfPeople": $scope.newRecipe.numberOfPeople, "dataCreation": "oggi"}
+        $scope.inCookbook = $scope.cookbook;
+       }
 
 }]);
