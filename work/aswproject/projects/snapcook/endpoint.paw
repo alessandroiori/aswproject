@@ -233,7 +233,7 @@
     </object>
     <object type="LMREQUEST" id="z118">
         <attribute name="uuid" type="string">DE326C60-1AA8-42A0-841F-7FB1996F40AA</attribute>
-        <attribute name="url" type="string">http://localhost:3000/recipe</attribute>
+        <attribute name="url" type="string">http://localhost:8080/recipe</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -351,14 +351,14 @@
     </object>
     <object type="LMREQUEST" id="z127">
         <attribute name="uuid" type="string">1F465317-077A-4428-880D-1FFCCE5E8F23</attribute>
-        <attribute name="url" type="string">http://localhost:3000/recipe</attribute>
+        <attribute name="url" type="string">http://localhost:8080/recipe</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"prova\\",\\"descrizione\\":\\"Ale \\\\u00e8 un gay\\",\\"tag\\":[\\"gay\\",\\"anal free\\",\\"simple\\"],\\"ingredients\\":[{\\"name\\":\\"culo\\",\\"quantity\\":\\"una fetta\\"}],\\"steps\\":[\\"prendere un alessadrodi qualsiasi natura\\",\\"bloccarlo\\",\\"atterrare il culo \\",\\"cuocerlo per 180 minuti a 400 gradi\\"],\\"difficulty\\":\\"1\\",\\"cost\\":\\"0\\",\\"timeOfSteps\\":\\"180\\",\\"numberOfPeople\\":\\"1\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"prova\\",\\"description\\":\\"Ale \\\\u00e8 un gay\\",\\"tag\\":[\\"gay\\",\\"anal free\\",\\"simple\\"],\\"ingredients\\":[{\\"name\\":\\"culo\\",\\"quantity\\":\\"una fetta\\"}],\\"steps\\":[\\"prendere un alessadrodi qualsiasi natura\\",\\"bloccarlo\\",\\"atterrare il culo \\",\\"cuocerlo per 180 minuti a 400 gradi\\"],\\"difficulty\\":\\"1\\",\\"cost\\":\\"0\\",\\"timeOfSteps\\":\\"180\\",\\"numberOfPeople\\":\\"1\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">2</attribute>
         <attribute name="name" type="string">Aggiunta di una ricetta</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z120"></relationship>

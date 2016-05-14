@@ -54,7 +54,7 @@ if from_source == false
     user "root"
     code <<-EOH
     node-v#{node[:nodejs][:version]}-linux-x64.tar.gz
-      wget #{path}node-v#{node[:nodejs][:version]}-linux-x64.tar.gz && \
+      wget --progress=bar:force #{path}node-v#{node[:nodejs][:version]}-linux-x64.tar.gz && \
       tar zxf node-v#{node[:nodejs][:version]}-linux-x64.tar.gz && \
       cd node-v#{node[:nodejs][:version]}-linux-x64 && \
       ./configure --prefix=#{node[:nodejs][:dir]} && \
@@ -85,7 +85,7 @@ else
     cwd "/opt"
     user "root"
     code <<-EOH
-      wget #{path}node-v#{node[:nodejs][:version]}-linux-x64.tar.gz && \
+      wget --progress=bar:force #{path}node-v#{node[:nodejs][:version]}-linux-x64.tar.gz && \
       tar zxf node-v#{node[:nodejs][:version]}-linux-x64.tar.gz && \
       ln -s /opt/node-v#{node[:nodejs][:version]}-linux-x64/bin/node /usr/local/bin/node && \
       ln -s /opt/node-v#{node[:nodejs][:version]}-linux-x64/bin/node-waf /usr/local/bin/node-waf && \

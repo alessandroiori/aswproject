@@ -80,11 +80,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             chef.add_recipe "nodejs"            
         end
 
-        node.vm.provision :shell, :inline => 'cd /home/vagrant/projects/snapcook;npm install;npm start'
+        #node.vm.provision :shell, :inline => 'cd /home/vagrant/projects/snapcook;npm install;npm start'
         
         #node.vm.provision :shell, :inline =>'nohup npm install &'
         #node.vm.provision :shell, :inline =>'nohup npm start &'
         #node.vm.provision :shell, :inline =>'node projects/snapcook/app.js'
+	
+	    node.vm.provision :shell, :inline => 'sh /home/vagrant/projects/run.sh'
+	
     
         node.vm.provision :shell, 
             inline: "echo  'configurazione nodo server completata'"

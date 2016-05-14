@@ -14,13 +14,13 @@ module.exports = {
             .exec(rs);
     },
     createRecipe: function (data, r) {
-        if (typeof data.name !== "undefined" ||
-            typeof data.description !== "undefined" ||
-            typeof data.tag !== "undefined" ||
-            typeof data.ingredients !== "undefined" ||
-            typeof data.steps !== "undefined" ||
-            typeof data.difficulty !== "undefined" ||
-            typeof data.cost !== "undefined" ||
+        if (typeof data.name !== "undefined" &&
+            typeof data.description !== "undefined" &&
+            typeof data.tag !== "undefined" &&
+            typeof data.ingredients !== "undefined" &&
+            typeof data.steps !== "undefined" &&
+            typeof data.difficulty !== "undefined" &&
+            typeof data.cost !== "undefined" &&
             typeof data.timeOfSteps !== "undefined") {
             var recipe = new Recipe(data)
             recipe.save( function (err) {
