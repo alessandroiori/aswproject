@@ -344,7 +344,9 @@ body {
 	width: 100%;
 	padding: 15px 30px 20px;
 }
-.info-ul { padding: 15px 20px; }
+.info-ul {
+	padding: 15px 20px;
+}
 .info-description-container {
 	
 

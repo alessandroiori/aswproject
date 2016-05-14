@@ -32,24 +32,28 @@
                                     </a>
    
                                        <div class="container-fluid">   
-                                          <div class="col-md-2">
+                                          <div class="col-sm-12">
                                             <!--Sidebar content-->
                                           Search: <input ng-model="query">
-                                          Category:
-                                            <select ng-model="filterCategory.tag"> 
+                                          </div>
+                                           <div class="col-sm-12">
+                                            Category:
+                                            <select ng-model="filterCategory.tag">
+                                                <option value="">Tutte</option>
                                               <option value="Antipasto">Antipasto</option>
                                               <option value="Primo">Primo</option>
                                               <option value="Secondo">Secondo</option>
                                               <option value="Contorno">Contorno</option>
                                               <option value="Dolce">Dolce</option>
-                                              <option selected value="">Tutte</option>
+
                                             </select>
-                                          Sort:
-                                            <select ng-model="orderProp"> 
-                                              <option selected value="name">Alphabetical</option>
-                                              <option value="timeOfSteps">Preparation time</option>
-                                            </select>
-                                        </div>
+                                           </div>
+                                           <div class=" col-sm-12">
+                                               Sort:<select ng-model="orderProp">
+                                                   <option value="name">Alfabeticamente</option>
+                                                   <option value="timeOfSteps">Tempo di preparazione</option>
+                                                </select>
+                                           </div>
                                      </div>
                                  </div> <!-- main-menu -->
 
