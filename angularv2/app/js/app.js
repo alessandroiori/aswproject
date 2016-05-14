@@ -7,6 +7,7 @@ var cookbookApp = angular.module('cookbookApp', [
   'appControllers'
 ]);
 
+
 cookbookApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
@@ -22,7 +23,7 @@ cookbookApp.config(['$routeProvider',
             templateUrl: 'partials/recipe-detail.html',
             controller: 'RecipeDetailCtrl'
         }).
-    when('/recipe/cookbook/:cookBookId', {
+    when('/cookbook/:cookBookId', {
         templateUrl: 'partials/recipe-list.html',
         controller: 'RecipeCookBookCtrl'
       }).

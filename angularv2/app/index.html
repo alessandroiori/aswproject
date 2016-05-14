@@ -57,9 +57,15 @@
                                     <ul class="info info-ul">
                                         <h3>CookBooks:</h3>
                                         <li ng-repeat="cookbook in cookbooks" >
-                                          <a href="#/recipe/cookbook/{{cookbook._id}}" class="about_proin" >{{cookbook.name}}</a>
+                                          <a href="#/cookbook/{{cookbook._id}}" class="about_proin" >{{cookbook.name}}</a>
                                         </li>
                                     </ul>
+                                </div>
+                                <div class="box bottom-main info-nav-container">
+                                    <ul class="info info-ul">
+                                        <li class="about_proin"><a href="#/recipe/add">Aggiungi una ricetta</a></li>
+                                    </ul>
+
                                 </div>
                           </div>
                        </div>
