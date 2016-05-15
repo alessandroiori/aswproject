@@ -12,7 +12,7 @@ This project was create for the course of ["Architettura dei Sistemi Software"](
 
 #####Start environment:
 
-`$ cd snapcook`
+`$ cd snapcook/enviroments/server-db`
 
 `$ vagrant up`
 
