@@ -13,7 +13,7 @@ module.exports = {
             .find()
             .exec(rs);
     },
-    createRecipe: function (data, r) {
+    createRecipe: function (data, cb) {
         if (typeof data.name !== "undefined" &&
             typeof data.description !== "undefined" &&
             typeof data.tag !== "undefined" &&
@@ -23,11 +23,11 @@ module.exports = {
             typeof data.cost !== "undefined" &&
             typeof data.timeOfSteps !== "undefined") {
             var recipe = new Recipe(data)
-            recipe.save( function (err) {
-                r (err, (err)?null:recipe);
+            recipe.save( function (err, r) {
+                cb(err, (err)?null:r);
             })
         } else {
-            r (true, null);
+            cb(true, null);
         }
     },
     updateRecipe: function (id, data, r) {

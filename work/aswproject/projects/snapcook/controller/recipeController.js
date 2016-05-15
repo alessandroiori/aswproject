@@ -20,7 +20,10 @@ router.post("/", function (req, res) {
     // Add recipe
     recipe.createRecipe(req.body, function (err, r) {
         if (err) res.json({status: false});
-        else res.json({status: true, recipe: r})
+        else res.json({
+                status: true,
+                "recipe": r
+            });
     })
 });
 
