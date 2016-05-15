@@ -140,16 +140,22 @@ appControllers.service("AppAdapter",['$http',function($http){
     this.getCookbook = function(cookbookId){
         return $http.get(host+"/cookbook/"+cookbookId)
     };
-    this.addRecipe = function (newRecipe){
+    this.addRecipe = function (recipe){
+        //cloning object recipe for preparing steps data to backend ["step1","step2"]without backfire
+        var newRecipe = JSON.parse(JSON.stringify(recipe));
         newRecipe.steps.forEach(function (step,index){
             newRecipe.steps[index] = step.descr;
         });
+        //prepare tags format for backend ["tag1","tag2"]
         var stringTags = newRecipe.tag;
-        newRecipe.tag = [];
-        stringTags.split(",").forEach(function (tag,index){
-            if(tag!="")
-                newRecipe.tag[index] = tag;
-        });
+        if (stringTags!=null){
+            newRecipe.tag = [];
+            stringTags.split(",").forEach(function (tag,index){
+                if(tag!="")
+                    newRecipe.tag[index] = tag;
+            });
+        }
+
         return $http.post(host+"/recipe",newRecipe);
     };
     this.getRecipes = function (){
