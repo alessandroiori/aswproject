@@ -63,7 +63,8 @@ module.exports  = {
     },
     linkRecipeForCookBook: function (id, id_recipe, cb) {
         CookBook.update({
-            _id: id,
+            _id: support.toObjctedId(id)
+        },{
             $addToSet: {
                 recipes: support.toObjctedId(id_recipe)
             }
