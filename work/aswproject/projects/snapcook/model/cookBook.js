@@ -8,7 +8,7 @@ module.exports  = {
                 _id: id
             }) 
             .populate("owner")
-            .populate("recipe")
+            .populate("recipes")
             .exec(cb);
     },
     getCookBooks: function (cb){
