@@ -9,7 +9,7 @@ appControllers.controller('CookBookCtrl', ['$scope', 'AppAdapter',
 
     AppAdapter.getCookbooks().then(
         function success(response){
-          $scope.cookbooks = response.data;
+          $scope.cookbooks = response.data.cookBooks;
         },function error(response){})
 
 }]);
@@ -19,7 +19,7 @@ appControllers.controller('RecipeListCtrl', ['$scope', 'AppAdapter',
 
     AppAdapter.getRecipes().then(
         function success(response) {
-          $scope.recipes = response.data;
+          $scope.recipes = response.data.recipes;
         },function error(response){});
 
 }]);
@@ -27,43 +27,35 @@ appControllers.controller('RecipeListCtrl', ['$scope', 'AppAdapter',
 
 appControllers.controller('RecipeCookBookCtrl', ['$scope', 'AppAdapter','$routeParams',
   function($scope, AppAdapter,$routeParams) {
-        //cambiare in cookbook/
-    AppAdapter.getCookbooks().then(
-        function success(response) {
-          response.data.forEach(function (cookBook){
-            if (cookBook._id == $routeParams.cookBookId){
-              $scope.recipes = cookBook.recipes;
-            }
+      var cookbookId = $routeParams.cookbookId;
+      AppAdapter.getCookbook(cookbookId).then(
+          function success(response) {
+              $scope.recipes = response.data.cookBook.recipes;
           }, function error(response){});
-  });
 
 }]);
 
 appControllers.controller('RecipeDetailCtrl', ['$scope', 'AppAdapter', '$routeParams',
   function($scope, AppAdapter, $routeParams) {
-      // cambiare recipe/id
-    AppAdapter.getRecipes().then(
-        function success (response){
-          response.data.forEach (function (recipe){
-            if(recipe._id == $routeParams.recipeId){
-              $scope.recipe = recipe;
-            }
-          });
-        }
-        ,function error (response){});
+      var recipeID =  $routeParams.recipeId;
+      AppAdapter.getRecipe(recipeID).then(
+          function success (response){
+            $scope.recipe = response.data.recipe;
+          }
+          ,function error (response){});
 }]);
 
 appControllers.controller('RecipeAddCtrl', ['$scope','AppAdapter',
   function($scope,AppAdapter) {
       AppAdapter.getCookbooks().then(
         function success (response){
-            $scope.cookbooks = response.data;
+            $scope.cookbooks = response.data.cookBooks;
       },function error(response){}
       );
       AppAdapter.getRecipes().then(
           function success (response){
-              $scope.recipes = response.data;
-              $scope.newRecipe = $scope.recipes[2];
+              $scope.recipes = response.data.recipes;
+              //$scope.newRecipe = $scope.recipes[2];
           },function error(response){}
       );
       $scope.newRecipe = {}
@@ -72,8 +64,8 @@ appControllers.controller('RecipeAddCtrl', ['$scope','AppAdapter',
           description:"",
           owener:""
         };
-
-      //$scope.newRecipe.ingredients = [{}];
+      $scope.cookbookSelected = {};
+      $scope.newRecipe.ingredients = [{}];
       $scope.addNewIngredient = function() {
       $scope.newRecipe.ingredients.push({});
       };
@@ -81,7 +73,7 @@ appControllers.controller('RecipeAddCtrl', ['$scope','AppAdapter',
       $scope.removeIngredient = function(index) {
           $scope.newRecipe.ingredients.splice(index,1);
       };
-      //$scope.newRecipe.steps = [];
+      $scope.newRecipe.steps = [];
 
       $scope.addNewStep = function() {
           $scope.newRecipe.steps.push({});
@@ -94,21 +86,22 @@ appControllers.controller('RecipeAddCtrl', ['$scope','AppAdapter',
           AppAdapter.addCookbook(cookbook).then(
               function success(response){
                   if(response.data.status){
-                      var cookbookAdded = response.data.cookbook
+                      var cookbookAdded = response.data.cookbook;
                       callLinkRecipeAtCookbook(recipe,cookbookAdded);
                   }
-                  else $scope.msg = "Errore nell'aggiunta del ricettario "
+                  else $scope.msg = "Errore nell'aggiunta del ricettario ";
               },function error(response){}
           )
       }
 
       function callLinkRecipeAtCookbook (recipe,cookbook){
+          console.log("dentro link",cookbook);
           AppAdapter.linkRecipeAtCookbook(recipe,cookbook).then(
               function success(response){
                   if (response.data.status){
-                      $scope.msg = "Ricetta aggiunta con successo"
+                      $scope.msg = "Ricetta aggiunta con successo";
                   }
-                  else $scope.msg = "Errore nel link ad un ricettario "
+                  else $scope.msg = "Errore nel link ad un ricettario ";
               },
               function error(response){}
           )
@@ -118,15 +111,21 @@ appControllers.controller('RecipeAddCtrl', ['$scope','AppAdapter',
           var coookbook = {};
           AppAdapter.addRecipe($scope.newRecipe).then(
               function success(response){
-                  $scope.response = response;
-                  var recipeAdded = response.data;
-                  if($scope.cookbookSelected == "newCookbook"){
-                      coookbook = $scope.newCookbook;
-                      callAddCookbookAndLinkRecipe(recipeAdded,coookbook);
-                  }else{
-                      coookbook = $scope.cookbookSelected;
-                      callLinkRecipeAtCookbook(recipeAdded,coookbook);
+                  if (response.data.status){
+                      $scope.response = response;
+                      var recipeAdded = response.data.recipe;
+                      console.log("recipeadded",recipeAdded)
+                      if($scope.cookbookSelected == "newCookbook"){
+                          coookbook = $scope.newCookbook;
+                          callAddCookbookAndLinkRecipe(recipeAdded,coookbook);
+                      }else{
+                          coookbook = $scope.cookbookSelected;
+                          console.log("noncreacookbook id ",coookbook._id)
+                          callLinkRecipeAtCookbook(recipeAdded,coookbook);
+                      }
                   }
+                  else $scope.msg = "Errore aggiunta ricetta"
+
               },
               function error(response){
                   $scope.response = response;
@@ -143,27 +142,30 @@ appControllers.service("AppAdapter",['$http',function($http){
         return $http.post(host+"/cookbook",newCookbook);
     };
     this.getCookbooks = function () {
-      return $http.get('cookbook.json');
+      return $http.get(host+"/cookbook");
     };
-    this.getCookbook = function(cookbook){
-        return $http.get(host+"/cookbook/"+cookbook._id)
+    this.getCookbook = function(cookbookId){
+        return $http.get(host+"/cookbook/"+cookbookId)
     };
     this.addRecipe = function (newRecipe){
       //trasform steps format to send
       newRecipe.steps.forEach(function (step,index){
-        newRecipe.steps[index] = step.descr;
+       newRecipe.steps[index] = step.descr;
       });
       return $http.post(host+"/recipe",newRecipe);
     };
     this.getRecipes = function (){
-      return $http.get('recipes.json')
+      return $http.get(host+"/recipe")
     };
-    this.getRecipe = function(recipe){
-        return $http.get(host+"/cookbook/"+recipe._id)
+    this.getRecipe = function(recipeId){
+        return $http.get(host+"/recipe/"+recipeId)
     };
     this.linkRecipeAtCookbook = function(recipe,cookbook){
       var recipeToLink = {"recipeID":recipe._id}
-      return $http.post(host+"/cookbook/"+cookbook_id+"/recipe/link",recipeToLink);
+        console.log(recipeToLink)
+        console.log("dentro post",cookbook)
+        console.log("dentro post",cookbook._id)
+      return $http.post(host+"/cookbook/"+cookbook._id+"/recipe/link",recipeToLink);
     };
 }]);
 

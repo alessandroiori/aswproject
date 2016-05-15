@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="tags" name="email" placeholder="tags... (e.g. Antipasto, Secondo)" ng-model="newRecipe.tag[0]">
+                        <input type="text" class="form-control" id="tags" name="email" placeholder="tags... (e.g. Antipasto, Secondo)" ng-model="newRecipe.tag">
                     </div>
 
                     <div class="form-group">
@@ -78,7 +78,7 @@
                     <div class="form-group col-sm-12">
                         <fieldset ng-repeat="step in newRecipe.steps track by $index">
                             <div class="displayInline">
-                                <input type="text" class="form-control" ng-model="step" placeholder="Passo {{$index+1}}...">
+                                <input type="text" class="form-control" ng-model="step.descr" placeholder="Passo {{$index+1}}...">
                                 <button class="btn view_more" ng-click="removeStep($index)">-</button>
                             </div>
                         </fieldset>

@@ -100,7 +100,7 @@
     </object>
     <object type="LMREQUEST" id="z105">
         <attribute name="uuid" type="string">C9CCC835-0808-47B5-8145-D9BD5F8DE568</attribute>
-        <attribute name="url" type="string">http://localhost:8080/recipe/573766a42a76d9ff0df7daf1</attribute>
+        <attribute name="url" type="string">http://localhost:8080/recipe/57385331b1c7eb120ec3d3bd</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -128,7 +128,7 @@
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">cookbook</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z124 z132 z102 z128 z133 z125 z112 z123"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z102 z112 z123 z124 z128 z133 z125"></relationship>
         <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
@@ -167,14 +167,14 @@
     </object>
     <object type="LMREQUEST" id="z112">
         <attribute name="uuid" type="string">50DCB60B-D9C2-41D6-8F8B-4BF182005423</attribute>
-        <attribute name="url" type="string">http://localhost:8080/cookbook/57383c856ff962120e06708c/recipe/link</attribute>
+        <attribute name="url" type="string">http://localhost:8080/cookbook/57385c17b1c7eb120ec3d3e7/recipe/link</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"keyValues":[[["recipeID"],["57383c8d6ff962120e06708d"],true]]},"identifier":"com.luckymarmot.BodyFormKeyValueDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"keyValues":[[["recipeID"],["57385331b1c7eb120ec3d3bd"],true]]},"identifier":"com.luckymarmot.BodyFormKeyValueDynamicValue"}]</attribute>
         <attribute name="order" type="int64">6</attribute>
         <attribute name="name" type="string">Aggiunta di una ricetta ad un ricettario</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z107"></relationship>
@@ -271,16 +271,6 @@
         <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
     </object>
-    <object type="LMKEYVALUE" id="z121">
-        <attribute name="value" type="string"></attribute>
-        <attribute name="order" type="int64">0</attribute>
-        <attribute name="name" type="string"></attribute>
-        <attribute name="enabled" type="bool">1</attribute>
-        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z132"></relationship>
-    </object>
     <object type="LMKEYVALUE" id="z122">
         <attribute name="value" type="string"></attribute>
         <attribute name="order" type="int64">0</attribute>
@@ -332,7 +322,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"studio\\",\\"description\\":\\"2\\",\\"owener\\":\\"prova\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"hhhhh\\",\\"description\\":\\"hhhh\\",\\"owener\\":\\"prova\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">1</attribute>
         <attribute name="name" type="string">Aggiunta di una ricettario</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z107"></relationship>
@@ -358,7 +348,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"prova\\",\\"description\\":\\"Ale \\\\u00e8 un gay\\",\\"tag\\":[\\"gay\\",\\"anal free\\",\\"simple\\"],\\"ingredients\\":[{\\"name\\":\\"culo\\",\\"quantity\\":\\"una fetta\\"}],\\"steps\\":[\\"prendere un alessadrodi qualsiasi natura\\",\\"bloccarlo\\",\\"atterrare il culo \\",\\"cuocerlo per 180 minuti a 400 gradi\\"],\\"difficulty\\":\\"1\\",\\"cost\\":\\"0\\",\\"timeOfSteps\\":\\"180\\",\\"numberOfPeople\\":\\"1\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"prova11111\\",\\"description\\":\\"Ale \\\\u00e8 un gay\\",\\"tag\\":[\\"gay\\",\\"anal free\\",\\"simple\\"],\\"ingredients\\":[{\\"name\\":\\"culo\\",\\"quantity\\":\\"una fetta\\"}],\\"steps\\":[\\"prendere un alessadrodi qualsiasi natura\\",\\"bloccarlo\\",\\"atterrare il culo \\",\\"cuocerlo per 180 minuti a 400 gradi\\"],\\"difficulty\\":\\"1\\",\\"cost\\":\\"0\\",\\"timeOfSteps\\":\\"180\\",\\"numberOfPeople\\":\\"1\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">2</attribute>
         <attribute name="name" type="string">Aggiunta di una ricetta</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z120"></relationship>
@@ -367,7 +357,7 @@
     </object>
     <object type="LMREQUEST" id="z128">
         <attribute name="uuid" type="string">439A94F1-3B34-4D6C-95CC-06AEE50148D9</attribute>
-        <attribute name="url" type="string">http://localhost:3000/cookbook/5731868a505377c05e861638</attribute>
+        <attribute name="url" type="string">http://localhost:8080/cookbook/57385c17b1c7eb120ec3d3e7</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -405,29 +395,14 @@
         <attribute name="order" type="int64">1</attribute>
         <attribute name="name" type="string">Default Jar</attribute>
     </object>
-    <object type="LMREQUEST" id="z132">
-        <attribute name="uuid" type="string">F2FBFD8B-246E-4665-8F8F-2FBAEA8DBD9A</attribute>
-        <attribute name="url" type="string">http://localhost:3000/cookbook/5731868a505377c05e861638</attribute>
-        <attribute name="storecookies" type="bool">1</attribute>
-        <attribute name="sendcookies" type="bool">1</attribute>
-        <attribute name="redirectmethod" type="bool">0</attribute>
-        <attribute name="redirectauthorization" type="bool">0</attribute>
-        <attribute name="method" type="string">GET</attribute>
-        <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">5</attribute>
-        <attribute name="name" type="string">Visualizzazione ricettario specifica</attribute>
-        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z107"></relationship>
-        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z121"></relationship>
-    </object>
     <object type="LMREQUEST" id="z133">
         <attribute name="uuid" type="string">00A8BA57-00C6-4224-9DB5-002504EC1C53</attribute>
-        <attribute name="url" type="string">http://localhost:3000/cookbook/5731868a505377c05e861638</attribute>
+        <attribute name="url" type="string">http://localhost:8080/cookbook/573857eeb1c7eb120ec3d3e6</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
         <attribute name="redirectauthorization" type="bool">0</attribute>
-        <attribute name="method" type="string">GET</attribute>
+        <attribute name="method" type="string">DELETE</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
         <attribute name="order" type="int64">4</attribute>
         <attribute name="name" type="string">Visualizzazione ricettario specifica</attribute>
