@@ -1,4 +1,4 @@
 #!/bin/sh
 cd /home/vagrant/projects/database
-sleep 1
+sleep 10
 mongorestore .
