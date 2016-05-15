@@ -47,6 +47,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         end
         
         node.vm.provision :shell, :inline => 'nohup mongod --bind_ip 10.11.1.201 &'
+
+	 node.vm.provision :shell, :inline => 'sh /home/vagrant/projects/restore.sh'
         
         node.vm.provision :shell, 
             inline: "echo  'configurazione nodo db completata'"
