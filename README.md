@@ -1,32 +1,35 @@
 #Snapcook ASW Project
 
-####Prerequisiti software:
+This project was create for the course of ["Architettura dei Sistemi Software"](http://cabibbo.dia.uniroma3.it/asw/) of the University of Roma Tre.
+
+####Software prerequisites:
 * git
 * Vagrant
 
-#####Clonare la repository:
+#####Clone repository:
 
-`$ git clone http://  snapcook`
+`$ git clone https://github.com/alessandroiori/aswproject snapcook`
 
-#####Avviare ambiente:
+#####Start environment:
 
 `$ cd snapcook`
 
 `$ vagrant up`
 
-#####Avviare l'applicazione da browser tramite link:
+#####Run application from browser at link:
 
-http://localhost:8080/
+`http://localhost:8080/`
 
-####Tecnologie utilizzate:
-* Mongodb v3.0
-* NodeJS v
-* npm v
-* expres v
-* AngularJS v
+####Technologies:
+* MongoDB 
+* NodeJS 
+* npm 
+* Expres 
+* AngularJS 
+* Bower
 * Chef
 
-######Componenti Team:
+######Team:
 * Silvia Di Lauro
 * Matteo Filippi
 * Alessandro Iori
