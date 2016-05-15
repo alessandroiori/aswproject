@@ -1,24 +1,24 @@
 #Snapcook ASW Project
 
-Prerequisiti software:
+####Prerequisiti software:
 * git
 * Vagrant
 
-Clonare la repository:
+#####Clonare la repository:
 
 `$ git clone http://  snapcook`
 
-Avviare ambiente:
+#####Avviare ambiente:
 
 `$ cd snapcook`
 
 `$ vagrant up`
 
-Avviare l'applicazione da browser tramite link:
+#####Avviare l'applicazione da browser tramite link:
 
 http://localhost:8080/
 
-Tecnologie utilizzate:
+####Tecnologie utilizzate:
 * Mongodb v3.0
 * NodeJS v
 * npm v
@@ -26,7 +26,7 @@ Tecnologie utilizzate:
 * AngularJS v
 * Chef
 
-Componenti Team:
+######Componenti Team:
 * Silvia Di Lauro
 * Matteo Filippi
 * Alessandro Iori
