@@ -19,5 +19,5 @@ app.use(function (req, res, next){
 app.use("/cookbook", cookBookController);
 app.use("/recipe", recipeController);
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/app'));
 app.listen(process.env.PORT || config.express.port);
