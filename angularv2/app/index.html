@@ -34,10 +34,10 @@
                                        <div class="container-fluid">   
                                           <div class="col-sm-12">
                                             <!--Sidebar content-->
-                                          Search: <input ng-model="query">
+                                          Cerca: <input ng-model="query">
                                           </div>
                                            <div class="col-sm-12">
-                                            Category:
+                                            Categoria:
                                             <select ng-model="filterCategory.tag">
                                                 <option value="">Tutte</option>
                                               <option value="Antipasto">Antipasto</option>
@@ -49,7 +49,7 @@
                                             </select>
                                            </div>
                                            <div class=" col-sm-12">
-                                               Sort:<select ng-model="orderProp">
+                                               Ordina:<select ng-model="orderProp">
                                                    <option value="name">Alfabeticamente</option>
                                                    <option value="timeOfSteps">Tempo di preparazione</option>
                                                 </select>
@@ -59,7 +59,7 @@
 
                                 <div class="box bottom-main info-nav-container" ng-controller="CookBookCtrl">
                                     <ul class="info info-ul">
-                                        <h3>CookBooks:</h3>
+                                        <h3>Ricettari:</h3>
                                         <li ng-repeat="cookbook in cookbooks" >
                                           <a href="#/cookbook/{{cookbook._id}}" class="about_proin" >{{cookbook.name}}</a>
                                         </li>

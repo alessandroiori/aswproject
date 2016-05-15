@@ -78,7 +78,7 @@
                     <div class="form-group col-sm-12">
                         <fieldset ng-repeat="step in newRecipe.steps track by $index">
                             <div class="displayInline">
-                                <input type="text" class="form-control" ng-model="step.descr" placeholder="Passo {{$index+1}}...">
+                                <input type="text" class="form-control" ng-model="step" placeholder="Passo {{$index+1}}...">
                                 <button class="btn view_more" ng-click="removeStep($index)">-</button>
                             </div>
                         </fieldset>
@@ -108,6 +108,9 @@
 
                     <div>
                         {{response}}
+                    </div>
+                    <div>
+                        {{msg}}
                     </div>
                 </form>
 

@@ -1,6 +1,5 @@
 [
     {
-        "_id":1,
         "name": "torta al cioccolato",
         "description": "buonissima e piena di cioccolato!! facile da preparare e molto gustosa! perfetta per chi ama il cioccolato",
         "tag": ["Dolce"],
@@ -9,13 +8,11 @@
         "difficulty": 2,
         "cost": 3,
         "timeOfSteps": 50,
-        "numberOfPeople": 4,
-        "dataCreation": "2016-05-09"
+        "numberOfPeople": 4
 
     },
 
     {
-        "_id":2,
         "name": "pasta con funghi porcini",
         "description": "buonissima e piena di cioccolato!! facile da preparare e molto gustosa! perfetta per chi ama il cioccolato",
         "tag": ["Primo"],
@@ -24,12 +21,10 @@
         "difficulty": 2,
         "cost": 3,
         "timeOfSteps": 25,
-        "numberOfPeople": 4,
-        "dataCreation": "2016-05-10"
+        "numberOfPeople": 4
     },
 
     {
-        "_id":3,
         "name": "torta rustica con zucchine",
         "description": "buonissima e piena di cioccolato!! facile da preparare e molto gustosa! perfetta per chi ama il cioccolato",
         "tag": ["Secondo", "Antipasto"],
@@ -38,8 +33,7 @@
         "difficulty": 2,
         "cost": 3,
         "timeOfSteps": 30,
-        "numberOfPeople": 4,
-        "dataCreation": "2016-05-11"
+        "numberOfPeople": 4
     }
 
 ]

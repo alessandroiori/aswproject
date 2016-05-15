@@ -1,7 +1,6 @@
 <div class="content-main">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="box london">
-
             <div class="info float-container">
                 <div class="col-sm-6 location-main">
                     <div class="col-sm-12 london-title">
@@ -44,14 +43,14 @@
                     </div>
                 </div> 
                 <div class="col-sm-12">
-                    <h5 class="text-uppercase"> Ingredients: </h5>
+                    <h5 class="text-uppercase"> Ingredienti: </h5>
                     <p ng-repeat="ingredient in recipe.ingredients">
                       {{$index+1}}:  {{ingredient.name}} - {{ingredient.quantity}}
                     </p>
                 </div>
                 <hr>
                 <div class="col-sm-12">
-                    <h5 class="text-uppercase"> Preparation Steps: </h5>
+                    <h5 class="text-uppercase"> Passi per la preparazione: </h5>
                     <p ng-repeat="step in recipe.steps">
                         {{$index+1}}: {{step}}
                     </p>

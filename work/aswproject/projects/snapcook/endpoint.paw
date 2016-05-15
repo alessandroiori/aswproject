@@ -167,14 +167,14 @@
     </object>
     <object type="LMREQUEST" id="z112">
         <attribute name="uuid" type="string">50DCB60B-D9C2-41D6-8F8B-4BF182005423</attribute>
-        <attribute name="url" type="string">http://localhost:8080/cookbook/573766c52a76d9ff0df7daf3/recipe/link</attribute>
+        <attribute name="url" type="string">http://localhost:8080/cookbook/57383c856ff962120e06708c/recipe/link</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"keyValues":[[["recipeID"],["573766a42a76d9ff0df7daf1"],true]]},"identifier":"com.luckymarmot.BodyFormKeyValueDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"keyValues":[[["recipeID"],["57383c8d6ff962120e06708d"],true]]},"identifier":"com.luckymarmot.BodyFormKeyValueDynamicValue"}]</attribute>
         <attribute name="order" type="int64">6</attribute>
         <attribute name="name" type="string">Aggiunta di una ricetta ad un ricettario</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z107"></relationship>
