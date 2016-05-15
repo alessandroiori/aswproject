@@ -66,8 +66,8 @@
                     <div class="form-group col-sm-12">
                             <fieldset  ng-repeat="ingredient in newRecipe.ingredients">
                                 <div class="displayInline">
-                                    <input ng-required type="text" class="form-control" ng-model="ingredient.name" placeholder="Nome ingrediente...">
-                                    <input ng-required type="text" class="form-control" ng-model="ingredient.quantity" placeholder="quantità...">
+                                    <input type="text" class="form-control" ng-model="ingredient.name" placeholder="Nome ingrediente...">
+                                    <input type="text" class="form-control" ng-model="ingredient.quantity" placeholder="quantità...">
                                     <button class="btn view_more" ng-click="removeIngredient($index)">-</button>
                                 </div>
                             </fieldset>
@@ -78,7 +78,7 @@
                     <div class="form-group col-sm-12">
                         <fieldset ng-repeat="step in newRecipe.steps track by $index">
                             <div class="displayInline">
-                                <input ng-required type="text" class="form-control" ng-model="step.descr" placeholder="Passo {{$index+1}}...">
+                                <input type="text" class="form-control" ng-model="step.descr" placeholder="Passo {{$index+1}}...">
                                 <button class="btn view_more" ng-click="removeStep($index)">-</button>
                             </div>
                         </fieldset>
@@ -88,16 +88,16 @@
                         <p class="form-group">Seleziona un ricettario esistente o creane uno nuovo </p>
                     </div>
                     <div class="col-sm-12">
-                        <select ng-required class="c-select form-group" ng-model="cookbookSelected">
+                        <select class="c-select form-group" ng-model="cookbookSelected">
                             <option value="">Seleziona ricettario</option>
                             <option value="newCookbook">Aggiungi Ricettario</option>
                             <option ng-repeat="cookbook in cookbooks" value="{{cookbook._id}}" >{{cookbook.name}}</option>
                         </select>
                     </div>
                     <div class="form-group" ng-if="cookbookSelected=='newCookbook'">
-                        <input ng-required type="text" class="form-control" id="nameCookbook" name="name" placeholder="Nome..." ng-model="newCookbook.name" >
-                        <input ng-required type="text" class="form-control" id="descrCookbook" name="descr" placeholder="Descrizione..." ng-model="newCookbook.description" >
-                        <input ng-required type="text" class="form-control" id="ownerCookbook" name="owner" placeholder="Nome creatore..." ng-model="newCookbook.owener" >
+                        <input type="text" class="form-control" id="nameCookbook" name="name" placeholder="Nome..." ng-model="newCookbook.name" >
+                        <input type="text" class="form-control" id="descrCookbook" name="descr" placeholder="Descrizione..." ng-model="newCookbook.description" >
+                        <input type="text" class="form-control" id="ownerCookbook" name="owner" placeholder="Nome creatore..." ng-model="newCookbook.owener" >
                     </div>
                     <div class="form-group">
                         <input class="btn view_more" name="submit" type="submit" ng-click="addRecipe()" value="Aggiungi" id="submit"  >
