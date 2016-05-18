@@ -44,6 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         node.vm.provision :chef_solo do |chef|
             chef.cookbooks_path = "../shared/cookbooks"
             chef.add_recipe "mongodb-debs"
+            chef.version = '12.10.40'
         end
         
         node.vm.provision :shell, :inline => 'nohup mongod --bind_ip 10.11.1.201 &'
@@ -79,7 +80,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # provisioning con chef
         node.vm.provision :chef_solo do |chef|
             chef.cookbooks_path = "../shared/cookbooks"
-            chef.add_recipe "nodejs"            
+            chef.add_recipe "nodejs"  
+            chef.version = '12.10.40'          
         end
 
         #node.vm.provision :shell, :inline => 'cd /home/vagrant/projects/snapcook;npm install;npm start'
