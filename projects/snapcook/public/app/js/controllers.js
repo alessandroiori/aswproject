@@ -7,11 +7,16 @@ var appControllers = angular.module('appControllers', []);
 appControllers.controller('CookBookCtrl', ['$scope', 'AppAdapter',
   function($scope, AppAdapter) {
 
-    AppAdapter.getCookbooks().then(
-        function success(response){
-          $scope.cookbooks = response.data.cookBooks;
-        },function error(response){})
+   function refreshCookbooks () {
+       AppAdapter.getCookbooks().then(
+           function success(response) {
+               $scope.cookbooks = response.data.cookBooks;
+           }, function error(response) {
 
+           })
+   };
+   refreshCookbooks();
+   eventGateway.on("refreshCookbooks",refreshCookbooks);
 }]);
 
 appControllers.controller('RecipeListCtrl', ['$scope', 'AppAdapter',
@@ -99,6 +104,7 @@ appControllers.controller('RecipeAddCtrl', ['$scope','AppAdapter',
               function success(response){
                   if (response.data.status){
                       $scope.msg = "Ricetta aggiunta con successo";
+                      eventGateway.emit("refreshCookbooks");
                   }
                   else $scope.msg = "Errore nel link ad un ricettario ";
               },
@@ -129,7 +135,7 @@ appControllers.controller('RecipeAddCtrl', ['$scope','AppAdapter',
 }]);
 
 appControllers.service("AppAdapter",['$http',function($http){
-    var host = "http://localhost:8080"
+    var host = "http://localhost:8080";
 
     this.addCookbook = function (newCookbook){
         return $http.post(host+"/cookbook",newCookbook);

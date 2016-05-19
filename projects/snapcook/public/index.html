@@ -14,6 +14,7 @@
     <script src="app/bower_components/angular-route/angular-route.js"></script>
     <script src="app/js/jquery-1.11.3.min.js"></script>
     <script src="app/js/bootstrap.min.js"></script>
+    <script src="app/bower_components/eventEmitter/EventEmitter.min.js"></script>
 
     <script src="app/js/app.js"></script>
     <script src="app/js/controllers.js"></script>
@@ -27,7 +28,7 @@
                         <div class="main-menu">
                             <div class="menu-container">
                                 <div class="block-keep-ratio block-keep-ratio-2-1 block-width-full home">                                    
-                                    <a href="#" class="block-keep-ratio__content  main-menu-link">
+                                    <a href="#/recipe" class="block-keep-ratio__content  main-menu-link">
                                         <span class="main-menu-link-text">HOME</span>                                        
                                     </a>
    
@@ -60,7 +61,7 @@
                                 <div class="box bottom-main info-nav-container" ng-controller="CookBookCtrl">
                                     <ul class="info info-ul">
                                         <h3>Ricettari:</h3>
-                                        <li ng-repeat="cookbook in cookbooks" >
+                                        <li ng-repeat="cookbook in cookbooks | orderBy:'name'" >
                                           <a href="#/cookbook/{{cookbook._id}}" class="about_proin" >{{cookbook.name}}</a>
                                         </li>
                                     </ul>

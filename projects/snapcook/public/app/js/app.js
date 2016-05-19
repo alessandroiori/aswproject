@@ -2,6 +2,8 @@
 
 /* App Module */
 
+var eventGateway = new EventEmitter();
+
 var cookbookApp = angular.module('cookbookApp', [
   'ngRoute',
   'appControllers'
